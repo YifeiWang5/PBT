@@ -1,2 +1,2 @@
 # PBT
-Population-based training
+Implementation of the Population-Based Training algorithm.
