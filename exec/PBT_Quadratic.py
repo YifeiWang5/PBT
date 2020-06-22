@@ -5,12 +5,15 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 dirName = os.path.dirname(__file__)
 sys.path.append(os.path.join(dirName, '..', '..'))
 
-from src.PBT_Quadratic.worker import Worker
+# from src.PBT_Quadratic.worker import Worker
 # from src.PBT_Quadratic.Evaluation import Evaluation
 
 
 def realQ(theta):
     return 1.2-sum(i*i for i in theta)
+
+def QHat(theta, hyperParam):
+    return 1.2-(hyperParam[0]*theta[0]*theta[0]+hyperParam[1]*theta[1]*theta[1])
 
 def main():
     # PBT_Quadratic Environment initialization
@@ -20,7 +23,7 @@ def main():
     #create the worker population
     numOfWorkers = 2
     init_hyperParam = [[0, 1], [1, 0]]
-    worker_list = [Worker(init_theta, init_hyperParam[i]) for i in range(numOfWorkers)]
+    # worker_list = [Worker(init_theta, init_hyperParam[i]) for i in range(numOfWorkers)]
     # for worker in worker_list:
     #     while(worker's Q gradient is not below convergenceTolerance):
     #       worker.setTheta(step(θ,h))

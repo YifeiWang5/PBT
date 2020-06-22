@@ -8,8 +8,7 @@ class Worker:
         self.numStepsSinceLastUpdate = 0
 
     def eval(self):
-        currQ = 1.2-(self.hyperParam[0]*self.theta[0]+self.hyperParam[1]*self.theta[1])
-        delta = realQ(self.theta)-currQ
+        delta = realQ(self.theta)-QHat()
         return delta
 
     def ready(self):

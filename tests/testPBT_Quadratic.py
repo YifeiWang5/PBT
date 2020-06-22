@@ -7,10 +7,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 
 # Local import
-from exec.PBT_Quadratic import realQ
+from exec.PBT_Quadratic import realQ, QHat
 
 @ddt
-class TestRealQ(unittest.TestCase):
+class TestQFunc(unittest.TestCase):
     @data(
         [[0.9, 0.9], -0.42],
         [[1, 0], 0.2],
@@ -21,6 +21,14 @@ class TestRealQ(unittest.TestCase):
     @unpack
     def test_RealQ(self, theta, expectedResult):
         self.assertAlmostEqual(realQ(theta), expectedResult, places=7)
+
+    @data(
+        [[0.9, 0.9], [1, 1], -0.42],
+        [[1, 0], [0, 1], 1.2],
+    )
+    @unpack
+    def test_QHat(self, theta, hyperParam, expectedResult):
+        self.assertAlmostEqual(QHat(theta, hyperParam), expectedResult, places=7)
 
     def tearDown(self):
         pass
