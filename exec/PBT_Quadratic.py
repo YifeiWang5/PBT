@@ -41,7 +41,6 @@ def main():
     # if not os.path.exists(trajectoryDirectory):
     #     os.makedirs(trajectoryDirectory)
 
-    # generate demo graph
 
 
 if __name__ == '__main__':
