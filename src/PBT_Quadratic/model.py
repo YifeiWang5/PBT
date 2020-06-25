@@ -25,7 +25,4 @@ def eval(theta):
 #             self.theta += alpha * d_surrogate_obj / (np.sqrt(self.rms) + eps)
 
 def ready(count):
-    isReady= False
-    if count >= 4:
-        isReady = True
-    return isReady
+    return count % 4 == 0
