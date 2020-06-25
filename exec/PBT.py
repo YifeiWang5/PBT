@@ -9,12 +9,8 @@ sys.path.append(os.path.join(dirName, '..', '..'))
 # from src.PBT_Quadratic.Evaluation import Evaluation
 
 
-def realQ(theta):
-    return 1.2-sum(i*i for i in theta)
 
-def QHat(theta, hyperParam):
-    return 1.2-(hyperParam[0]*theta[0]*theta[0]+hyperParam[1]*theta[1]*theta[1])
-
+# move the model functions to the specific isolated scripts to the prblem
 def main():
     # PBT_Quadratic Environment initialization
     convergenceTolerance = 10e-5 #???

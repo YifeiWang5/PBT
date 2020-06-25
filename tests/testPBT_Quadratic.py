@@ -5,9 +5,8 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-
 # Local import
-from exec.PBT_Quadratic import realQ, QHat
+from src.PBT_Quadratic.model import eval, QHat
 
 @ddt
 class TestQFunc(unittest.TestCase):
@@ -19,8 +18,8 @@ class TestQFunc(unittest.TestCase):
     )
 
     @unpack
-    def test_RealQ(self, theta, expectedResult):
-        self.assertAlmostEqual(realQ(theta), expectedResult, places=7)
+    def test_eval(self, theta, expectedResult):
+        self.assertAlmostEqual(eval(theta), expectedResult, places=7)
 
     @data(
         [[0.9, 0.9], [1, 1], -0.42],
