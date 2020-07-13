@@ -1,4 +1,16 @@
-def train(population,)
+import sys
+import sys
+import os
+import numpy as np
+from functools import reduce
+
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+# Local import
+from exec.PBT_Quadratic import step, eval, ready, exploit, explore
+
+def train(population, step, eval, ready, exploit, explore, convergenceTolerance):
 # for worker in worker_list:
 #     while(worker's Q gradient is not below convergenceTolerance):
 #       worker.setTheta(step(θ,h))
@@ -13,8 +25,4 @@ def train(population,)
 #
 #
 
-# DIRNAME = os.path.dirname(__file__)
-# trajectoryDirectory = os.path.join(DIRNAME, '..', '..', 'data', 'evaluateObstacle',
-#                                    'trajectories')
-# if not os.path.exists(trajectoryDirectory):
-#     os.makedirs(trajectoryDirectory)
+    return
