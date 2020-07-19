@@ -31,14 +31,14 @@ class TestPBTQuadratic(unittest.TestCase):
             self.assertAlmostEqual(calculatedDictionary[key], expectedDictionary[key], places=places)
 
     @data(
-        # [16, 1],
-        # [5, 0],
-        # [20, 1],
-        # [30, 0]
+        [[0.9, 0.9], [1, 1], [0.9, 0.9]],
+        [[0.6, 0.7], [1, 1], [0.6, 0.7]],
+        [[0.9, 0.9], [0.5, 0.5], [0.7695, 0.7695]],
+        [[0.9, 0.9], [0.5, 0.1], [0.7371, 0.6975]]
     )
     @unpack
     def test_step(self, theta, hyperParam, expectedResult):
-        self.assertEqual(step(theta, hyperParam), expectedResult)  # Almost
+        self.assertAlmostEqual(step(theta, hyperParam), expectedResult)  # Almost
 
     @data(
         [16, 1],

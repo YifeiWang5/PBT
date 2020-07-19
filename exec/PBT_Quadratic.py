@@ -6,7 +6,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 dirName = os.path.dirname(__file__)
 sys.path.append(os.path.join(dirName, '..', '..'))
 from src.worker import Worker
-from src.PBT import train
+# from src.PBT import train
 
 def QHat(theta, hyperParam):
     return 1.2-(hyperParam[0]*theta[0]*theta[0]+hyperParam[1]*theta[1]*theta[1])
@@ -20,9 +20,8 @@ def step(theta, hyperParam):
     # the gradient vector
     gradient = [2*theta[0]*(1-hyperParam[0])+(1-hyperParam[1])*theta[1]*theta[1], 2*theta[1]*(1-hyperParam[1])+(1-hyperParam[0])*theta[0]*theta[0]]
     eta = -0.1 # step size/ learning factor
-    delta = eta * gradient
-    alpha = 0.01
-    new_t = delta + theta
+    delta = [eta * i for i in gradient]
+    new_t = [delta[i] + theta[i] for i in range(len(theta))]
     return new_t
 
 def ready(evalVal, step, pop):
