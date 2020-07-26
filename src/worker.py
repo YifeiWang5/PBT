@@ -13,15 +13,11 @@ class Worker:
         self.step = 0
         self.Qhist = []
 
-    def updateHyperParam(self, newHyperParam):
+    def updateWorker(self, newHyperParam, newTheta, newEval, newStep):
         self.hyperParam = newHyperParam
-        return
-    def updateTheta(self, newTheta):
         self.theta = newTheta
-        return
-
-    def updateStep(self):
-        self.step += 1
+        self.p = newEval
+        self.step = newStep
         return
 
 

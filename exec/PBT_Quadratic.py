@@ -14,6 +14,9 @@ def QHat(theta, hyperParam):
 def eval(theta):
     return 1.2-sum(i*i for i in theta) # - QHat()???
 
+def lossFunc(theta, hyperParam):
+    return eval(theta) - QHat(theta, hyperParam)
+
 def step(theta, hyperParam):
     # one step gradient descent; find the delta  (loss function(param); can analytically compute it)
     # loss_func = eval(theta) - QHat(theta, hyperParam) # error from the true value given the params
