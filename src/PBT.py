@@ -4,11 +4,6 @@ import os
 import numpy as np
 from functools import reduce
 
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
-# Local import
-from exec.PBT_Quadratic import step, eval, ready, exploit, explore, lossFunc, population, convergenceTolerance
 def update(worker, population, step, eval, ready, exploit, explore):
     worker.setTheta(step(θ, h))
     curr_eval = eval(worker.theta)
@@ -23,13 +18,10 @@ def update(worker, population, step, eval, ready, exploit, explore):
     return
 
 
-def train(population, step, eval, ready, exploit, explore, lossFunc, convergenceTolerance):
+def train(population, step, eval, ready, exploit, explore, lossFunc, convergenceTolerance, stepLimit):
 
     for worker in population:
-        while(lossFunc(worker.theta, worker.hyperParam) > convergenceTolerance):
+        while(lossFunc(worker.theta, worker.hyperParam) > convergenceTolerance and worker.step < stepLimit):
             update(worker, population, step, eval, ready, exploit, explore)
-
-#
-#
-
-    return exploit(population[0].hyperParam, population[0].theta, population[0].p, population)[1] # best hyperParam
+    return population
+        # exploit(population[0].hyperParam, population[0].theta, population[0].p, population)[1] # best hyperParam
